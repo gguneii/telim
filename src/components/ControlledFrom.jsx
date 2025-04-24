@@ -7,7 +7,7 @@ export default function BasicForm() {
     email: "",
   });
 
-  const [errors, setErrors] = useState({});
+  const  [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
