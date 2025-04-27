@@ -1,11 +1,11 @@
 import { useFormik } from "formik";
 import { basicSchema } from "../schemas/yup";
 
-const onSubmit = async (values, actions) => {
-    console.log(values);
-    console.log(actions);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+const onSubmit = (values, actions) => {
+  setTimeout(() => {
     actions.resetForm();
+  }, 1000);
+  // console.log(actions);
 //   console.log("submitted!");
 };
 
@@ -21,6 +21,7 @@ const BasicForm = () => {
       validationSchema: basicSchema,
       onSubmit,
     });
+console.log(values);
 
   //   console.log(formik);
 //   console.log(errors);
@@ -48,6 +49,7 @@ const BasicForm = () => {
           <p className="text-red-500">{errors.email}</p>
         )}
       </div>
+
       <div className="flex flex-col gap-1 ">
         <label className="text-white font-semibold" htmlFor="age">
           Age
@@ -67,6 +69,7 @@ const BasicForm = () => {
           <p className="text-red-500">{errors.age}</p>
         )}
       </div>
+
       <div className="flex flex-col gap-1">
         <label className="text-white font-semibold" htmlFor="password">
           Password
@@ -88,6 +91,7 @@ const BasicForm = () => {
           <p className="text-red-500">{errors.password}</p>
         )}
       </div>
+
       <div className="flex flex-col gap-1">
         <label className="text-white font-semibold" htmlFor="confirmPassword">
           Confirm Password
