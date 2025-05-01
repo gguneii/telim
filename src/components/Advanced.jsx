@@ -1,17 +1,34 @@
-import React from "react";
+import React, { useRef } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { advancedSchema } from "../schemas/yup";
 
 function Advanced() {
+
+  const fileInputRef = useRef(null);
+  console.log(fileInputRef);
+  
+
   const submit = (values, actions) => {
+    console.log(values.file);
+
     setTimeout(() => {
       actions.resetForm();
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ""; // file input təmizlənir
+      }
     }, 1000);
     // console.log(values);
   };
+
+
   return (
     <Formik
-      initialValues={{ username: "", jobType: "", acceptedTerms: false }}
+      initialValues={{
+        username: "",
+        jobType: "",
+        acceptedTerms: false,
+        file: "",
+      }}
       validationSchema={advancedSchema}
       onSubmit={submit}
     >
@@ -39,6 +56,7 @@ function Advanced() {
               className="text-red-500 text-sm mt-1"
             />
           </label>
+
           <label
             htmlFor="job"
             className="cursor-pointer text-white font-semibold"
@@ -69,6 +87,29 @@ function Advanced() {
             />
           </label>
 
+          <label htmlFor="file" className="text-white font-semibold">
+            Upload file
+            <input
+              type="file"
+              name="file"
+              id="file"
+              ref={fileInputRef} 
+              className={`w-full text-white cursor-pointer mt-2 border rounded-[6px] pl-2 py-2 outline-none bg-[#29303f] ${
+                params.errors.file && params.touched.file
+                  ? "border-red-500"
+                  : "border-[#ccc5c5]"
+              }`}
+              onChange={(event) => {
+                params.setFieldValue("file", event.currentTarget.files[0]);
+              }}
+            />
+            <ErrorMessage
+              name="file"
+              component="div"
+              className="text-red-500 text-sm mt-1"
+            />
+          </label>
+
           <label htmlFor="acceptedTerms" className="flex items-center">
             <Field
               type="checkbox"
@@ -83,7 +124,7 @@ function Advanced() {
           <ErrorMessage
             name="acceptedTerms"
             component="p"
-            className="text-red-500 text-sm mt-1"
+            className="text-red-500 text-sm"
           />
           <button
             disabled={params.isSubmitting}

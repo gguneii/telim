@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import AdvancedForm from "./components/AdvancedForm";
 import BasicForm from "./components/BasicForm";
 import Advanced from "./components/Advanced";
 

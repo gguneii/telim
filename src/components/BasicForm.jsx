@@ -21,9 +21,9 @@ const BasicForm = () => {
       validationSchema: basicSchema,
       onSubmit,
     });
-console.log(values);
+// console.log(values);
 
-  //   console.log(formik);
+//   console.log(formik);
 //   console.log(errors);
 
   return (
@@ -113,7 +113,7 @@ console.log(values);
           <p className="text-red-500">{errors.confirmPassword}</p>
         )}
       </div>
-      <button disabled ={isSubmitting} type="submit" className="w-full text-center font-semibold text-[#191c27] rounded-[6px] py-2 cursor-pointer bg-[#3072b0]" >Submit</button>
+      <button disabled ={isSubmitting} type="submit" className="w-full text-center font-semibold text-[#191c27] rounded-[6px] py-2 cursor-pointer bg-[#3072b0] mt-1" >Submit</button>
     </form>
   );
 };

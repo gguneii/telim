@@ -24,9 +24,23 @@ export const advancedSchema = yup.object().shape({
     .required("Required"),
   jobType: yup
     .string()
-    .oneOf(["designer", "developer", "manager", "other"], "Please select a job type")
+    .oneOf(
+      ["designer", "developer", "manager", "other"],
+      "Please select a job type"
+    )
     .required("Required"),
   acceptedTerms: yup
     .boolean()
     .oneOf([true], "You must accept the terms and conditions"),
+  file: yup
+    .mixed()
+    .required("File is required")
+    .test("filesize", "File too large", (value) =>
+     value ? value.size <= 2 * 1024 * 1024 : false
+    )
+    .test("filetype", "Unsupported File Format", (value) =>
+      value
+        ? ["image/jpg", "image/jpeg", "image/png"].includes(value.type)
+        : false
+    ),
 });
