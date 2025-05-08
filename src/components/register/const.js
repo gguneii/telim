@@ -58,3 +58,23 @@ export const useRegisterConst = () => {
     }
 
 }
+
+
+export const dynamicFields = {
+    developer: {
+      name: "language",
+      label: "Programming Language",
+      placeholder: "Enter language",
+    },
+    manager: {
+      name: "teamSize",
+      label: "Team Size",
+      placeholder: "Enter team size",
+    },
+    designer: {
+      name: "designTool",
+      label: "Design Tool",
+      placeholder: "Enter design tool",
+    },
+  };
+  

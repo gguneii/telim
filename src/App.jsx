@@ -6,7 +6,7 @@ function App() {
   const [view, setView] = useState("basic");
   return (
     <div className="bg-[#191c27] h-[100vh] ">
-      <nav className="flex justify-center gap-10 pt-30 pb-10 items-center">
+      <nav className="flex justify-center gap-10 pt-10 pb-10 items-center">
         <h3
           className="cursor-pointer text-[20px]"
           onClick={() => setView("basic")}

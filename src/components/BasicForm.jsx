@@ -23,7 +23,7 @@ const BasicForm = () => {
     });
 // console.log(values);
 
-//   console.log(formik);
+  // console.log(formik);
 //   console.log(errors);
 
   return (
